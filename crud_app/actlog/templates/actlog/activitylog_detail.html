@@ -1,0 +1,21 @@
+{% extends "actlog/base.html" %}
+{% block content %}
+    
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h1 class="mr-2" >{{ object.activity }}</h1>
+              <small class="text-muted">{{ object.day|date:"F d, Y" }}</small>
+		
+			<div>	<a class = "btn btn-secondary btn-sm mt-1 mb-1" href = "{% url 'actlog-update' object.id %}" > Update </a>
+				<a class = "btn btn-danger btn-sm mt-1 mb-1" href = "{% url 'actlog-delete' object.id %}" > Delete </a>
+				</div>
+
+			  
+            </div>
+           
+            <p class="article-content">Resting Heart Rate: {{ object.rhr }} beats per minute 
+				<br>After-activity Heart Rate: {{object.ahr}} beats per minute</br> <br>High of the day: {{object.highday}}</br></p>
+          </div>
+        </article>
+{% endblock content %}

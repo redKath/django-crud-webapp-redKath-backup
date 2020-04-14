@@ -1,0 +1,25 @@
+{% extends "actlog/base.html" %}
+{% load static%}
+{% block content %}
+	
+	<div class = "row" > 
+		<div class = "col-2  " > 
+			<div class="card" style="width: 18rem;">
+			  <img src="{% static "actlog/act.jpg" %}"class="card-img-top" alt="Activities">
+				  <div class="card-body">
+						<h5 class="card-title">Activity Log</h5>
+						<p class="card-text">Create, update, delete and view your activity log .</p>
+						<a href="{% url 'actlog-view' %}" class="btn btn-primary"
+						 data-toggle="tooltip" data-placement="left" title="Go to Activity Log">Go to Activity Log</a>
+				  </div>
+			</div>
+			</div>
+		
+		
+		
+</div>
+
+{% endblock content %}
+
+ 
+
