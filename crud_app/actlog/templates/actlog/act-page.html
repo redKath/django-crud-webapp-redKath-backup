@@ -1,0 +1,52 @@
+
+
+{% extends "actlog/base.html" %}
+{% load django_tables2 %}
+{% render_table table %}
+{% load static%}
+{% block content %}
+<h1 class= "h1  " style = "margin-bottom: 100px"> <center> Activity Log &emsp;  <a href = "{% url 'actlog-create' %}" > 
+<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style = "color: green"  data-toggle="tooltip" data-placement="left" title="Add New Activity"> </span></a>
+
+<a href = "{% url 'actlog-pdf' %}" > 
+	<span class="glyphicon glyphicon-print" aria-hidden="true" style = "color: blue"  data-toggle="tooltip" data-placement="left" title="Export to PDF"> </span></a>
+	<table class="mt-20 table table-hover " style = "width: 1200px">
+	  <thead class = "thead-light">
+		<tr  style = "font-size: 16px" class ="font-family-Helvetica-Neue"> 
+		  
+		  <th scope="col">Date</th>
+		  <th scope="col" >Resting Heart Rate</th>
+		  <th scope="col" >Recovery Heart Rate</th>
+		  <th scope="col" ><center> Physical Activity</center></th>
+		  <th scope="col" ><center>High of the Day</center></th>
+		  <th scope="col" ><center>Actions</center></th>
+		</tr>
+	  </thead>
+	  
+
+	  {% for act in activities %}
+	  	  
+		  <tbody>
+			<tr style = "font-size: 16px" class ="font-family-Helvetica-Neue" > 
+			  <td style ="width:120px"> {{ act.day }}</td>
+			  <td style ="width:200px">{{ act.rhr }} bpm </td>
+			  <td style = "width:200px">{{ act.ahr }} bpm</td>
+			  <td style = "width:250 px"><center>{{ act.activity }}</center></td>
+			  <td><center>{{ act.highday }}</center></td>
+			  <td><center> <a href = "{% url 'actlog-update' act.id %}" > 
+			  <span class="glyphicon glyphicon-pencil" aria-hidden="true" style = "color: blue"
+			   data-toggle="tooltip" data-placement="left" title="Update Activity"></span></a>
+				<a href = "{% url 'actlog-delete' act.id %}" > 
+				<span class="glyphicon glyphicon-trash" aria-hidden="true" style = "color: red"
+				 data-toggle="tooltip" data-placement="left" title="Delete Activity "></span>
+				</a></center>
+	
+			  
+</td>
+			  
+			</tr>
+			
+		  </tbody>
+		  {% endfor %}
+	</table>
+{% endblock content %}
